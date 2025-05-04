@@ -1,0 +1,67 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #B0A990;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.bodyBorder{
+    margin: 1rem;
+    padding: 0.5rem;
+    color: #B0A990;
+    border: 1rem solid #202030;
+    border-radius: 1rem;
+    background-color: #202030;
+    height: calc(100vh - 5rem); 
+    width: calc(100vw - 5rem);
+    box-shadow: 0.1rem 0.2rem 0.2rem 0.2rem #202030;
+}
+
+.frontPageHeader{
+    text-align: center;
+    font-size: 2rem;
+    word-spacing: 0;
+}
+
+legend{
+    font-size: 2rem;
+}
+
+.clockContainer{
+    text-align: center;
+}
+
+.clockTime{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.clockDate, .clockDay{
+    font-size: 1.5rem;
+    margin-top: 5px;
+}
+
+.linkContainer{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+a:link, a:visited {
+    background-color: #39304A;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid #B0A990;
+}
+  
+a:hover, a:active {
+    background-color: #B0A990;
+    color: black;
+}

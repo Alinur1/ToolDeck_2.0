@@ -1,21 +1,48 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <meta
-      http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <title>ToolDeck</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    <p>👋</p>
-    <p id="info"></p>
-  </body>
-  <script src="./renderer.js"></script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/assets/style.css"/>
+  <title>ToolDeck</title>
+</head>
+<body>
+
+  <div class="bodyBorder">
+    <div class="frontPageHeader">
+      <p>ToolDeck</p>
+      <p>Offline .. Private .. Secure</p>  
+    </div>
+
+    <div>
+      <fieldset>
+        <legend>Clock</legend>
+
+        <div class="clockContainer">
+          <div id="time" class="clockTime"></div>
+          <div id="date" class="clockDate"></div>
+          <div id="day" class="clockDay"></div>
+        </div>
+
+        <div class="linkContainer">
+          <a href="./src/pages/timer.html">
+            Timer
+          </a>
+          <a href="#">
+            Stopwatch
+          </a>
+          <a href="#">
+            Alarm
+          </a>
+          <a href="#">
+            Clipboard
+          </a>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+
+  <script src="./src/js_files/clock.js"></script>
+
+</body>
 </html>

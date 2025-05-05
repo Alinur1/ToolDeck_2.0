@@ -5,6 +5,25 @@ body{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+a:link, a:visited {
+    background-color: #39304A;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid #B0A990;
+}
+  
+a:hover, a:active {
+    background-color: #B0A990;
+    color: black;
+}
+
+legend{
+    font-size: 2rem;
+}
+
 .bodyBorder{
     margin: 1rem;
     padding: 0.5rem;
@@ -23,7 +42,8 @@ body{
     word-spacing: 0;
 }
 
-legend{
+.subPageHeader{
+    text-align: center;
     font-size: 2rem;
 }
 
@@ -51,17 +71,40 @@ legend{
     gap: 1rem;
 }
 
-a:link, a:visited {
+.numberInputGroup, .btnTimerGroup{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.timerInputBox{
+    height: 2rem;
+    width: 8rem;
+    font-size: 1.1rem;
+}
+
+.functionalButton{
+    height: 2rem;
+    width: 6rem;
+    font-size: 1.1rem;
+    background-color: #B0A990;
+    cursor: pointer;
+    border: none;
+}
+
+.functionalButton:hover{
     background-color: #39304A;
     color: white;
-    padding: 14px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
     border: 1px solid #B0A990;
 }
-  
-a:hover, a:active {
-    background-color: #B0A990;
-    color: black;
+
+.countdownDisplay{
+    text-align: center;
+    margin-top: 1.4rem;
+    font-size: 2rem;
 }

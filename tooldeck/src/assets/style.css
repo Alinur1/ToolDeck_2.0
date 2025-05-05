@@ -34,6 +34,7 @@ legend{
     height: calc(100vh - 5rem); 
     width: calc(100vw - 5rem);
     box-shadow: 0.1rem 0.2rem 0.2rem 0.2rem #202030;
+    overflow-y: auto;
 }
 
 .frontPageHeader{
@@ -71,7 +72,7 @@ legend{
     gap: 1rem;
 }
 
-.numberInputGroup, .btnTimerGroup{
+.numberInputGroup, .btnTimerGroup, .btnStopwatchGroup{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -103,8 +104,24 @@ legend{
     border: 1px solid #B0A990;
 }
 
-.countdownDisplay{
+.countdownDisplay, .stopwatchDisplay{
     text-align: center;
     margin-top: 1.4rem;
     font-size: 2rem;
+}
+
+.lapList{
+    align-items: center;
+    text-align: center;
+    margin-top: 1.4rem;
+    font-size: 1.5rem;
+}
+
+.lapList2{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }

@@ -12,6 +12,8 @@ const startStopBtn = document.getElementById("startStopBtn");
 const pauseBtn = document.getElementById("pauseBtn");
 const resetBtn = document.getElementById("resetBtn");
 
+const audio = new Audio("../assets/sounds/timer-finished.mp3");
+
 startStopBtn.addEventListener("click", () => {
   if (!isRunning) {
     startTimer();
@@ -62,6 +64,7 @@ function startTimer() {
       display.textContent = "Time's up!";
       isRunning = false;
       startStopBtn.textContent = "Start";
+      audio.play();
       return;
     }
 
@@ -83,7 +86,7 @@ function formatTime(seconds) {
   const h = Math.floor((seconds % 86400) / 3600);
   const m = Math.floor((seconds % 3600) / 60);
   const s = seconds % 60;
-  return `${d}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+  return `${d} Days - ${pad(h)} Hours - ${pad(m)} Minutes - ${pad(s)} Seconds`;
 }
 
 function pad(num) {

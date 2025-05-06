@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolDeck - Stopwatch</title>
+    <link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+    <div class="bodyBorder">
+        <a href="../../index.html">
+            Back
+        </a>
+
+        <h2 class="subPageHeader">
+            Set Alarm
+        </h2>
+    
+    <div class="numberInputGroup">
+      <input class="alarmInputBox" type="number" id="alarmHour" min="1" max="12" placeholder="HH">
+      <input class="alarmInputBox" type="number" id="alarmMinute" min="0" max="59" placeholder="MM">
+      <select class="alarmInputBox" id="alarmPeriod">
+        <option value="AM">AM</option>
+        <option value="PM">PM</option>
+      </select>
+      <button class="functionalButton" id="setAlarmBtn">Set Alarm</button>
+    </div>
+
+    <h3 class="lapList">Upcoming Alarms</h3>
+    <ul class="lapList2" id="alarmList"></ul>
+
+    <div id="alarmPopup" class="countdownDisplay hidden">
+        <p id="alarmText">⏰ Alarm ringing!</p>
+        <button class="functionalButton" id="dismissAlarm">Dismiss</button>
+    </div>
+
+    </div>
+
+    <script src="../js_files/alarm.js"></script>
+    
+</body>
+</html>

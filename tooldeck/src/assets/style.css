@@ -83,7 +83,7 @@ legend{
     margin-top: 2rem;
 }
 
-.timerInputBox{
+.timerInputBox, .alarmInputBox{
     height: 2rem;
     width: 8rem;
     font-size: 1.1rem;
@@ -107,7 +107,7 @@ legend{
 .countdownDisplay, .stopwatchDisplay{
     text-align: center;
     margin-top: 1.4rem;
-    font-size: 2rem;
+    font-size: 1.6rem;
 }
 
 .lapList{
@@ -124,4 +124,8 @@ legend{
     justify-content: center;
     align-items: center;
     align-content: center;
+}
+
+.hidden{
+    display: none;
 }

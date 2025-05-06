@@ -129,3 +129,71 @@ legend{
 .hidden{
     display: none;
 }
+
+.clipboardItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 0.1rem solid #B0A990;
+    padding: 10px;
+    margin-top: 0.3rem;
+    font-size: 1.2rem;
+}
+
+.clipboardCheckbox {
+    margin-right: 1rem;
+    cursor: pointer;
+    transform: scale(1.7);
+}
+
+.clipboardContent {
+    flex: 1;
+    overflow-wrap: break-word;
+}
+  
+.clipboardButtonsPosition {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.clipboardActionButtons{
+    height: 1.4rem;
+    width: 4rem;
+    font-size: 1rem;
+    background-color: #B0A990;
+    cursor: pointer;
+    border: none; 
+    font-weight: bold;
+}
+
+.clipboardActionButtons:hover{
+    color: white;
+    font-weight: bold;
+    background-color: #202030;
+    border: 0.1rem solid #B0A990;
+}
+
+.clipboardTopButtonsPosition{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.2rem;
+}
+
+.clipboardTopButton{
+    height: 3rem;
+    width: 9rem;
+    font-size: 1rem;
+    background-color: #B0A990;
+    cursor: pointer;
+    border: none;
+}
+
+.clipboardTopButton:hover{
+    color: white;
+    font-weight: bold;
+    background-color: #202030;
+    border: 0.1rem solid #B0A990;
+}

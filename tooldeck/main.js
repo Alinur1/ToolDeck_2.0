@@ -15,15 +15,16 @@ const createWindow = () => {
     width: 800,
     height: 600,
     minHeight: 650,
-    minWidth: 400,
+    minWidth: 550,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false,
+      contextIsolation: true,
       preload: path.join(__dirname, 'preload.js'),
     },
   });
 
   win.loadFile('index.html');
+  // win.webContents.openDevTools();
 };
 
 app.whenReady().then(() => {

@@ -20,8 +20,16 @@ a:hover, a:active {
     color: black;
 }
 
+fieldset{
+    border: 0.2rem solid #635C51;
+    margin-top: 1rem;
+}
+
 legend{
     font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #B0A990;
 }
 
 .bodyBorder{

@@ -1,4 +1,5 @@
 const output = document.getElementById("clipboardOutput");
+let allSelected = false;
 
 function loadClipboardHistory() {
   const history = JSON.parse(localStorage.getItem("clipboardHistory") || "[]");
@@ -113,3 +114,14 @@ document.getElementById("clearAllBtn").addEventListener("click", () => {
   }
 });
 
+document.getElementById("toggleSelectAllBtn").addEventListener("click", () => {
+  const checkboxes = document.querySelectorAll(".clipboardCheckbox");
+  checkboxes.forEach(cb => cb.checked = !allSelected);
+  allSelected = !allSelected;
+  document.getElementById("toggleSelectAllBtn").textContent = allSelected ? "Deselect All" : "Select All";
+});
+
+
+document.getElementById("searchClipboard").addEventListener("input", (e) => {
+  loadClipboardHistory(e.target.value);
+});

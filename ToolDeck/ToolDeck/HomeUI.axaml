@@ -1,0 +1,190 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ToolDeck.HomeUI">
+	<UserControl.Styles>
+		<Style Selector="Button">
+			<Setter Property="Foreground" Value="#B0A990" />
+			<Setter Property="Background" Value="#202030" />
+			<Setter Property="Height" Value="40" />
+			<Setter Property="Width" Value="150" />
+			<Setter Property="HorizontalAlignment" Value="Center" />
+			<Setter Property="HorizontalContentAlignment" Value="Center" />
+			<Setter Property="VerticalContentAlignment" Value="Center" />
+			<Setter Property="FontSize" Value="13" />
+			<Setter Property="Margin" Value="10 10 0 10" />
+			<Setter Property="Cursor" Value="Hand" />
+		</Style>
+	</UserControl.Styles>
+	<ScrollViewer>
+		<Border Background="#39304A"
+			BorderThickness="0"
+			Margin="0"
+			Padding="1">
+			<Grid RowDefinitions="auto, auto, auto, auto, auto">
+
+				<!--Clock Panel-->
+				<WrapPanel Grid.Row="0"
+						   VerticalAlignment="Center"
+						   HorizontalAlignment="Center"
+						   Margin="0 10 0 10">
+					<Border BorderThickness="2"
+							BorderBrush="#B0A990"
+							Margin="2"
+							Padding="2"
+							VerticalAlignment="Center"
+							HorizontalAlignment="Center">
+						<WrapPanel Orientation="Vertical">
+							<TextBlock Foreground="#B0A990"
+									   FontSize="25"
+									   FontWeight="Bold"
+									   HorizontalAlignment="Center"
+									   VerticalAlignment="Center"
+									   Margin="0 10 0 -15">
+								Clock
+							</TextBlock>
+							<WrapPanel Orientation="Horizontal"
+									   Margin="20 20 20 10">
+								<Button Content="Timer" />
+								<Button Content="Stopwatch" />
+								<Button Content="Alarm" />
+								<Button Content="Clipboard" />
+							</WrapPanel>
+						</WrapPanel>
+					</Border>
+				</WrapPanel>
+
+				<!--PDF Tool Panel-->
+				<WrapPanel Grid.Row="1"
+						   VerticalAlignment="Center"
+						   HorizontalAlignment="Center"
+						   Margin="0 0 0 10">
+					<Border BorderThickness="2"
+							BorderBrush="#B0A990"
+							Margin="2"
+							Padding="2"
+							VerticalAlignment="Center"
+							HorizontalAlignment="Center">
+						<WrapPanel Orientation="Vertical">
+							<TextBlock Foreground="#B0A990"
+									   FontSize="25"
+									   FontWeight="Bold"
+									   HorizontalAlignment="Center"
+									   VerticalAlignment="Center"
+									   Margin="0 10 0 -15">
+								PDF Tools
+							</TextBlock>
+							<WrapPanel Orientation="Horizontal"
+									   Margin="20 20 20 10">
+								<Button Content="Merge PDF"
+										x:Name="btnMergePDF"
+										Click="GoToMergePDF"/>
+								<Button Content="Split Pages" />
+								<Button Content="Reorder Pages" />
+								<Button Content="Compress PDF" />
+								<Button Content="Sign PDF" />
+								<Button Content="Add Watermark" />
+								<Button Content="Protect PDF" />
+								<Button Content="Page Numbers" />
+								<!--<Button Content="Edit PDF"/>-->
+							</WrapPanel>
+						</WrapPanel>
+					</Border>
+				</WrapPanel>
+
+				<!--QR Code Panel-->
+				<WrapPanel Grid.Row="2"
+						   VerticalAlignment="Center"
+						   HorizontalAlignment="Center"
+						   Margin="0 0 0 10">
+					<Border BorderThickness="2"
+							BorderBrush="#B0A990"
+							Margin="2"
+							Padding="2"
+							VerticalAlignment="Center"
+							HorizontalAlignment="Center">
+						<WrapPanel Orientation="Vertical">
+							<TextBlock Foreground="#B0A990"
+									   FontSize="25"
+									   FontWeight="Bold"
+									   HorizontalAlignment="Center"
+									   VerticalAlignment="Center"
+									   Margin="0 10 0 -15">
+								QR Code Scanner/Generator
+							</TextBlock>
+							<WrapPanel Orientation="Horizontal"
+									   Margin="20 20 20 10">
+								<Button Content="QR Code Scanner" />
+								<Button Content="QR Code Generator" />
+							</WrapPanel>
+						</WrapPanel>
+					</Border>
+				</WrapPanel>
+
+				<!--Document Scanner Panel-->
+				<WrapPanel Grid.Row="3"
+						   VerticalAlignment="Center"
+						   HorizontalAlignment="Center"
+						   Margin="0 0 0 10">
+					<Border BorderThickness="2"
+							BorderBrush="#B0A990"
+							Margin="2"
+							Padding="2"
+							VerticalAlignment="Center"
+							HorizontalAlignment="Center">
+						<WrapPanel Orientation="Vertical">
+							<TextBlock Foreground="#B0A990"
+									   FontSize="25"
+									   FontWeight="Bold"
+									   HorizontalAlignment="Center"
+									   VerticalAlignment="Center"
+									   Margin="0 10 0 -15">
+								Scan Document
+							</TextBlock>
+							<WrapPanel Orientation="Horizontal"
+									   Margin="20 20 20 10">
+								<Button Content="Document Scanner" />
+							</WrapPanel>
+						</WrapPanel>
+					</Border>
+				</WrapPanel>
+
+				<!--File Conversion-->
+				<WrapPanel Grid.Row="4"
+						   VerticalAlignment="Center"
+						   HorizontalAlignment="Center"
+						   Margin="0 0 0 10">
+					<Border BorderThickness="2"
+							BorderBrush="#B0A990"
+							Margin="2"
+							Padding="2"
+							VerticalAlignment="Center"
+							HorizontalAlignment="Center">
+						<WrapPanel Orientation="Vertical">
+							<TextBlock Foreground="#B0A990"
+									   FontSize="25"
+									   FontWeight="Bold"
+									   HorizontalAlignment="Center"
+									   VerticalAlignment="Center"
+									   Margin="0 10 0 -15">
+								File Conversion
+							</TextBlock>
+							<WrapPanel Orientation="Horizontal"
+									   Margin="20 20 20 10">
+								<Button Content="PDF To Word" />
+								<Button Content="PDF To PowerPoint" />
+								<Button Content="PDF To Excel" />
+								<Button Content="Word To PDF" />
+								<Button Content="PowerPoint To PDF" />
+								<Button Content="Excel To PDF" />
+							</WrapPanel>
+						</WrapPanel>
+					</Border>
+				</WrapPanel>
+
+			</Grid>
+		</Border>
+	</ScrollViewer>
+</UserControl>

@@ -20,6 +20,6 @@ public partial class HomeUI : UserControl
 
     private void GoToMergePDF(object sender, RoutedEventArgs e)
     {
-        _main.NavigateTo(new MergePdfUI(_main));
+        _main.NavigateTo("MergePdfUI");
     }
 }

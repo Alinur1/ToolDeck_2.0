@@ -1,0 +1,7 @@
+npm install electron --save-dev
+
+npm install --save-dev nodemon concurrently electron
+
+npm install electron-is-dev
+
+npm install pdfjs-dist

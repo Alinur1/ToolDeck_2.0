@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolDeck - Merge PDF</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+
+<body>
+    <div class="bodyBorder">
+        <a href="../../index.html">Back</a>
+        <h2 class="subPageHeader">
+            Merge PDF
+        </h2>
+        <div class="topButtonGrp">
+            <input type="file" id="pdfFileInput" accept=".pdf" multiple style="display: none;">
+            <button class="functionalButton" id="selectPdfButton">Select PDF</button>
+            <button class="functionalButton" id="mergeSaveButton">Merge and Save</button>
+            <button class="functionalButton" id="clearAllButton">Clear All</button>
+        </div>
+        <div class="pdfListPanel">
+            <h3>Selected PDF Files:</h3>
+            <ul id="pdfFileList"></ul>
+        </div>
+        <div id="messageArea"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.7.570/pdf.min.js"></script>
+    <script>
+        if (typeof pdfjsLib !== 'undefined') {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.7.570/pdf.worker.min.js';
+        } else {
+            alert("PDF.js library (pdfjsLib) failed to load. PDF previews will not be available.");
+        }
+    </script>
+
+    <script src="../js_files/merge-pdf.js"></script>
+</body>
+
+</html>

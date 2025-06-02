@@ -110,21 +110,6 @@ const createMenu = (win) => {
         },
         { type: 'separator' },
         {
-          label: 'Previous Page',
-          accelerator: 'Left',
-          click: () => {
-            win.webContents.send('previous-page')
-          }
-        },
-        {
-          label: 'Next Page',
-          accelerator: 'Right',
-          click: () => {
-            win.webContents.send('next-page')
-          }
-        },
-        { type: 'separator' },
-        {
           label: 'Toggle Developer Tools',
           accelerator: process.platform === 'darwin' ? 'Alt+Cmd+I' : 'Ctrl+Shift+I',
           click: () => {

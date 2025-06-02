@@ -1,0 +1,6 @@
+hey. actually i want to make a good, free and open source PDF reader just like adobe's PDF reader with various tools such as Merge PDF, Split PDF, Compress PDF, Edit PDF, Sign PDF, Put Watermark, Rotate PDF, Unlock PDF, Protect PDF, Re-Organize Pages, Put Page Numbers, Crop PDF, this kinds of features actually. By default, user can open multiple PDF files as he wants and each PDF will be shown in tabbed system with zoom in-out feature just like the browser basically. I want to use the following stack:
+1. Plain ElectronJS
+2. HTML, JavaScript, plain CSS ("pages" folder for .html files, "js_files" for .js files and "assets" folder for .css files and other icons as necessary)
+3. Certain backend things for the tools features will be done using ASP.NET Core web API using .NET 8 (not for hosting purpose.)
+
+My stack seems like compatible for online services but no. I want my software to work completely offline and both the frontend electron and backend asp.net core web api should be packaged as same so that users can just download the software and ready to use. No need for hosting. No CDN's should be used, rather i will download the files 

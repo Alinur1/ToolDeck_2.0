@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Reader</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header with controls -->
+        <div class="header">
+            <div class="controls">
+                <button id="openPdfBtn" class="btn btn-primary">
+                    <span class="icon">📂</span>
+                    Open PDF
+                </button>
+                <button id="closeTabBtn" class="btn btn-secondary" disabled>
+                    <span class="icon">✕</span>
+                    Close Tab
+                </button>
+            </div>
+        </div>
+
+        <!-- Tab bar -->
+        <div class="tab-bar" id="tabBar">
+            <!-- Tabs will be dynamically added here -->
+        </div>
+
+        <!-- Main content area -->
+        <div class="content-area">
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-content">
+                    <h1>📄 PDF Reader</h1>
+                    <p>Click "Open PDF" to start reading your documents</p>
+                    <div class="welcome-features">
+                        <div class="feature">
+                            <span class="feature-icon">📑</span>
+                            <span>Multiple PDF tabs</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🔍</span>
+                            <span>Zoom controls</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">📖</span>
+                            <span>Page navigation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PDF viewer container -->
+            <div class="pdf-viewer-container" id="pdfViewerContainer" style="display: none;">                <div class="pdf-toolbar">
+                    <div class="toolbar-group">
+                        <span class="page-info">
+                            Page <span id="currentPage">1</span> of <span id="totalPages">1</span>
+                        </span>
+                    </div>
+
+                    <div class="toolbar-group">
+                        <button id="zoomOutBtn" class="toolbar-btn">
+                            <span class="icon">🔍-</span>
+                        </button>
+                        <span class="zoom-info" id="zoomLevel">100%</span>
+                        <button id="zoomInBtn" class="toolbar-btn">
+                            <span class="icon">🔍+</span>
+                        </button>
+                        <button id="fitWidthBtn" class="toolbar-btn">
+                            <span class="icon">↔</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="pdf-content">
+                    <div id="pdfContainer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden file input -->
+    <input type="file" id="fileInput" accept=".pdf" style="display: none;" multiple>
+
+    <!-- PDF.js -->
+    <script src="js_files/pdfjs_files/pdf.min.js"></script>
+    <script src="js_files/pdf-manager.js"></script>
+    <script src="js_files/tab-manager.js"></script>
+    <script src="js_files/app.js"></script>
+</body>
+
+</html>

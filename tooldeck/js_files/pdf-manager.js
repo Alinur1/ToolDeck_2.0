@@ -100,14 +100,25 @@ class PDFManager {
             console.error('Error loading PDF:', error);
             this.showError('Failed to load PDF');
         }
-    }
-
-    async renderAllPages() {
+    }    async renderAllPages() {
         if (!this.currentPDF) return;
 
+        // Create placeholders for all pages first
         for (let pageNum = 1; pageNum <= this.totalPages; pageNum++) {
-            await this.renderPage(pageNum);
+            const placeholder = document.createElement('div');
+            placeholder.className = 'pdf-page-placeholder';
+            placeholder.id = `page-${pageNum}`;
+            placeholder.dataset.pageNum = pageNum;
+            this.pdfContainer.appendChild(placeholder);
         }
+
+        // Render all pages
+        const renderPromises = [];
+        for (let pageNum = 1; pageNum <= this.totalPages; pageNum++) {
+            renderPromises.push(this.renderPage(pageNum));
+        }
+
+        await Promise.all(renderPromises);
     }
 
     async renderPage(pageNum) {
@@ -130,7 +141,12 @@ class PDFManager {
 
             await page.render(renderContext).promise;
             this.pageCanvases.set(pageNum, canvas);
-            this.pdfContainer.appendChild(canvas);
+            
+            // Replace the placeholder with the rendered canvas
+            const placeholder = document.getElementById(`page-${pageNum}`);
+            if (placeholder) {
+                placeholder.replaceWith(canvas);
+            }
 
         } catch (error) {
             console.error(`Error rendering page ${pageNum}:`, error);

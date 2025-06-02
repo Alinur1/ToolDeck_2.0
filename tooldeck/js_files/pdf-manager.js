@@ -188,6 +188,12 @@ class PDFManager {
     async zoomIn() {
         if (this.scale < 5.0) {
             this.scale = Math.min(5.0, this.scale * 1.25);
+            // Update tab data before reloading pages
+            if (window.tabManager && window.tabManager.activeTabId) {
+                window.tabManager.updateTabData(window.tabManager.activeTabId, {
+                    scale: this.scale
+                });
+            }
             await this.reloadAllPages();
         }
     }
@@ -195,12 +201,24 @@ class PDFManager {
     async zoomOut() {
         if (this.scale > 0.25) {
             this.scale = Math.max(0.25, this.scale / 1.25);
+            // Update tab data before reloading pages
+            if (window.tabManager && window.tabManager.activeTabId) {
+                window.tabManager.updateTabData(window.tabManager.activeTabId, {
+                    scale: this.scale
+                });
+            }
             await this.reloadAllPages();
         }
     }
 
     async resetZoom() {
         this.scale = 1.0;
+        // Update tab data before reloading pages
+        if (window.tabManager && window.tabManager.activeTabId) {
+            window.tabManager.updateTabData(window.tabManager.activeTabId, {
+                scale: this.scale
+            });
+        }
         await this.reloadAllPages();
     }
 
@@ -227,6 +245,13 @@ class PDFManager {
             const newScale = availableWidth / viewport.width;
             this.scale = Math.max(0.25, Math.min(5.0, newScale));
 
+            // Update tab data before reloading pages
+            if (window.tabManager && window.tabManager.activeTabId) {
+                window.tabManager.updateTabData(window.tabManager.activeTabId, {
+                    scale: this.scale
+                });
+            }
+            
             await this.reloadAllPages();
         } catch (error) {
             console.error('Error fitting to width:', error);

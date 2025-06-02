@@ -1,3 +1,5 @@
+// tooldeck(project folder)/index.js
+
 const { app, BrowserWindow, Menu, dialog, ipcMain } = require('electron/main')
 const path = require('path')
 const fs = require('fs')

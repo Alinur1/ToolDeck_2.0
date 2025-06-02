@@ -1,3 +1,5 @@
+// tooldeck(project folder)/js_files/tab-manager.js
+
 class TabManager {
     constructor() {
         this.tabs = new Map();

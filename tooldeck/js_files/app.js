@@ -1,3 +1,5 @@
+// tooldeck(project folder)/js_files/app.js
+
 class PDFReaderApp {
     constructor() {
         this.tabManager = null;

@@ -1,3 +1,5 @@
+// tooldeck(project folder)/js_files/pdf-manager.js
+
 class PDFManager {
     constructor() {
         this.pdfContainer = document.getElementById('pdfContainer');

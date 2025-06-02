@@ -14,6 +14,11 @@ class PDFManager {
         this.totalPagesSpan = document.getElementById('totalPages');
         this.zoomLevelSpan = document.getElementById('zoomLevel');
         this.pdfContent = document.querySelector('.pdf-content');
+        this.previewBar = document.getElementById('pagePreviewBar');
+        this.previewToggle = document.getElementById('previewToggle');
+        this.previewContent = document.getElementById('previewContent');
+        this.pdfViewerContainer = document.getElementById('pdfViewerContainer');
+        this.thumbnailScale = 0.2; // Scale for thumbnails
 
         // Control buttons
         this.zoomInBtn = document.getElementById('zoomInBtn');
@@ -22,6 +27,7 @@ class PDFManager {
 
         this.setupEventListeners();
         this.setupPDFJS();
+        this.setupPreviewBar();
     } 
     
     setupPDFJS() {
@@ -78,6 +84,89 @@ class PDFManager {
         });
     }
 
+    setupPreviewBar() {
+        this.previewToggle.addEventListener('click', () => {
+            this.previewBar.classList.toggle('collapsed');
+            this.pdfViewerContainer.classList.toggle('with-preview');
+            
+            // Re-render the visible thumbnails if the bar is expanded
+            if (!this.previewBar.classList.contains('collapsed')) {
+                this.renderVisibleThumbnails();
+            }
+        });
+
+        // Use Intersection Observer for lazy loading thumbnails
+        this.thumbnailObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const pageNum = parseInt(entry.target.dataset.pageNum);
+                    this.renderThumbnail(pageNum);
+                }
+            });
+        }, {
+            root: this.previewContent,
+            threshold: 0.1
+        });
+    }
+
+    async renderThumbnail(pageNum) {
+        if (!this.currentPDF) return;
+
+        try {
+            const page = await this.currentPDF.getPage(pageNum);
+            const viewport = page.getViewport({ scale: this.thumbnailScale });
+            
+            const canvas = document.createElement('canvas');
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            
+            const context = canvas.getContext('2d');
+            await page.render({
+                canvasContext: context,
+                viewport: viewport
+            }).promise;
+
+            const thumbnailContainer = document.querySelector(`.page-thumbnail[data-page-num="${pageNum}"]`);
+            if (thumbnailContainer) {
+                const oldCanvas = thumbnailContainer.querySelector('canvas');
+                if (oldCanvas) {
+                    oldCanvas.remove();
+                }
+                thumbnailContainer.insertBefore(canvas, thumbnailContainer.firstChild);
+            }
+        } catch (error) {
+            console.error(`Error rendering thumbnail ${pageNum}:`, error);
+        }
+    }
+
+    async renderVisibleThumbnails() {
+        if (!this.currentPDF || this.previewBar.classList.contains('collapsed')) return;
+
+        this.previewContent.innerHTML = '';
+        
+        for (let pageNum = 1; pageNum <= this.totalPages; pageNum++) {
+            const thumbnailContainer = document.createElement('div');
+            thumbnailContainer.className = 'page-thumbnail';
+            thumbnailContainer.dataset.pageNum = pageNum;
+            // if (pageNum === this.currentPage) {
+            //     thumbnailContainer.classList.add('active');
+            // }
+
+            const pageNumber = document.createElement('div');
+            pageNumber.className = 'page-number';
+            pageNumber.textContent = pageNum;
+
+            thumbnailContainer.appendChild(pageNumber);
+            this.previewContent.appendChild(thumbnailContainer);
+
+            thumbnailContainer.addEventListener('click', () => {
+                this.goToPage(pageNum);
+            });
+
+            this.thumbnailObserver.observe(thumbnailContainer);
+        }
+    }
+
     async loadPDF(pdfDocument, tabData) {
         try {
             this.currentPDF = pdfDocument;
@@ -88,6 +177,7 @@ class PDFManager {
 
             // Render all pages
             await this.renderAllPages();
+            this.renderVisibleThumbnails();
             this.updateUI();
 
             // Scroll to the last viewed page if specified
@@ -174,6 +264,7 @@ class PDFManager {
         if (this.currentPage !== closestPage) {
             this.currentPage = closestPage;
             this.updateUI();
+            this.updateActiveThumbnail();
 
             // Update tab data
             if (window.tabManager && window.tabManager.activeTabId) {
@@ -183,6 +274,19 @@ class PDFManager {
                 });
             }
         }
+    }
+
+    updateActiveThumbnail() {
+        const thumbnails = this.previewContent.querySelectorAll('.page-thumbnail');
+        thumbnails.forEach(thumb => {
+            const pageNum = parseInt(thumb.dataset.pageNum);
+            if (pageNum === this.currentPage) {
+                thumb.classList.add('active');
+                thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                thumb.classList.remove('active');
+            }
+        });
     }
 
     async zoomIn() {

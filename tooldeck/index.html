@@ -55,7 +55,8 @@
             </div>
 
             <!-- PDF viewer container -->
-            <div class="pdf-viewer-container" id="pdfViewerContainer" style="display: none;">                <div class="pdf-toolbar">
+            <div class="pdf-viewer-container" id="pdfViewerContainer" style="display: none;">
+                <div class="pdf-toolbar">
                     <div class="toolbar-group">
                         <span class="page-info">
                             Page <span id="currentPage">1</span> of <span id="totalPages">1</span>
@@ -78,6 +79,15 @@
 
                 <div class="pdf-content">
                     <div id="pdfContainer"></div>
+                </div>
+
+                <!-- Page Preview Bar -->
+                <div class="page-preview-bar collapsed" id="pagePreviewBar">
+                    <button class="preview-toggle" id="previewToggle">☰</button>
+                    <div class="preview-header">Page Thumbnails</div>
+                    <div class="preview-content" id="previewContent">
+                        <!-- Thumbnails will be added here -->
+                    </div>
                 </div>
             </div>
         </div>

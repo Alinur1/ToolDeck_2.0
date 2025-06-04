@@ -148,9 +148,9 @@ class PDFManager {
             const thumbnailContainer = document.createElement('div');
             thumbnailContainer.className = 'page-thumbnail';
             thumbnailContainer.dataset.pageNum = pageNum;
-            // if (pageNum === this.currentPage) {
-            //     thumbnailContainer.classList.add('active');
-            // }
+            if (pageNum === this.currentPage) {
+                thumbnailContainer.classList.add('active');
+            }
 
             const pageNumber = document.createElement('div');
             pageNumber.className = 'page-number';
@@ -265,14 +265,19 @@ class PDFManager {
             this.currentPage = closestPage;
             this.updateUI();
             this.updateActiveThumbnail();
+        }
+    }
 
-            // Update tab data
-            if (window.tabManager && window.tabManager.activeTabId) {
-                window.tabManager.updateTabData(window.tabManager.activeTabId, {
-                    currentPage: this.currentPage,
-                    scale: this.scale
-                });
+    async goToPage(pageNumber) {
+        const page = Math.max(1, Math.min(this.totalPages, pageNumber));
+        if (page !== this.currentPage) {
+            this.currentPage = page;
+            const canvas = this.pageCanvases.get(page);
+            if (canvas) {
+                canvas.scrollIntoView();
             }
+            this.updateUI();
+            this.updateActiveThumbnail();
         }
     }
 
@@ -282,7 +287,6 @@ class PDFManager {
             const pageNum = parseInt(thumb.dataset.pageNum);
             if (pageNum === this.currentPage) {
                 thumb.classList.add('active');
-                thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             } else {
                 thumb.classList.remove('active');
             }
@@ -373,18 +377,6 @@ class PDFManager {
         // Update zoom button states
         this.zoomOutBtn.disabled = this.scale <= 0.25;
         this.zoomInBtn.disabled = this.scale >= 5.0;
-    }
-
-    async goToPage(pageNumber) {
-        const page = Math.max(1, Math.min(this.totalPages, pageNumber));
-        if (page !== this.currentPage) {
-            this.currentPage = page;
-            const canvas = this.pageCanvases.get(page);
-            if (canvas) {
-                canvas.scrollIntoView();
-            }
-            this.updateUI();
-        }
     }
 
     getCurrentPageInfo() {

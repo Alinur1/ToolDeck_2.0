@@ -297,10 +297,10 @@ body {
 .preview-toggle {
     position: absolute;
     left: -30px;
-    top: 50%;
+    top: 5%;
     transform: translateY(-50%);
-    background: #2c3e50;
-    color: white;
+    background: white;
+    color: black;
     border: none;
     width: 30px;
     height: 60px;
@@ -312,7 +312,8 @@ body {
 }
 
 .preview-toggle:hover {
-    background: #34495e;
+    background: black;
+    color: white;
 }
 
 .preview-content {
@@ -356,7 +357,8 @@ body {
 }
 
 .page-thumbnail.active {
-    border: 2px solid #3498db;
+    border: 5px solid #3498db;
+    border-radius: 5px;
 }
 
 .page-thumbnail canvas {
